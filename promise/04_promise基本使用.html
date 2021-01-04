@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04_promise基本使用</title>
+</head>
+<body>
+  <script>
+    
+	const p = new Promise((resolve, reject) => {
+		console.log("执行 excutor");
+		setTimeout(() => {
+			const time = Date.now()
+			if(time % 2 == 0) {
+				resolve("success, time is " + time)
+			} else {
+				reject("fail, time is " + time)
+			}
+		}, 1000)
+	})
+	
+	console.log("new Promise 之后");
+	
+	p.then(
+		value => {
+			console.log("成功的回调：", value);
+		},
+		reason => {
+			console.log("失败的回调：", reason);
+		}
+	)
+	
+	
+  </script>
+</body>
+</html>
